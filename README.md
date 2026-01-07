@@ -23,6 +23,7 @@ Este proyecto consiste en el análisis de una encuesta ficticia con el objetivo 
 
 ## 📊 Resultados
 ![Promedio de sabor](figures/promedio_sabor.png)
+![Promedio de sabor](figures/promedio_genero.png)
 
 ## 📂 Estructura del proyecto
 - data/: datos de la encuesta

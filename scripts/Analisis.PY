@@ -59,8 +59,14 @@ sabor_promedios = df.groupby("Preferencia")[
 print("\n\nSabores por genero:\n\n", sabor_sexo)
 print("\n\nSabores por Preferencia:\n\n", sabor_promedios)
 
-sabor_promedios.plot(kind="bar")
-plt.title("Promedio de sabor por producto")
+sabor_sexo.plot(kind="bar")
+plt.title("Promedio por genero")
 plt.ylabel("Puntaje promedio")
 plt.xlabel("Producto")
 plt.show()
+
+# sabor_promedios.plot(kind="bar")
+# plt.title("Promedio de sabor por producto")
+# plt.ylabel("Puntaje promedio")
+# plt.xlabel("Producto")
+# plt.show()
