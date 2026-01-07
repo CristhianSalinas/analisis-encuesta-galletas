@@ -1,19 +1,22 @@
+#importar las librerias necesarias
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#cargar el dataset
 df = pd.read_csv("../data/encuesta_galletas.csv", encoding="latin1")
 
+#analisis exploratorio
 preferencia_sexo = df.groupby("sexo")["Preferencia"].value_counts()
-
+#mostrar resultados
 print("Preferencia por sexo:\n\n", preferencia_sexo)
-
+#conteo de productos probados y conocidos
 famchocolate = df["familiaridad_chocolate"].value_counts()
 famavena = df["familiaridad_avena"].value_counts()
 fammani = df["familiaridad_mani"].value_counts()
 
-
+#mostrar resultados
 print("\n\nConteo de productos probados y conocidos:\n\n", famchocolate, "\n\n", famavena, "\n\n", fammani)
-
+#mapear familiaridad a valores numericos
 map_familiaridad = {
     "Probado": 2,
     "Oido_no_probado": 1
@@ -23,10 +26,13 @@ df["fam_choc_num"] = df["familiaridad_chocolate"].map(map_familiaridad)
 df["fam_avena_num"] = df["familiaridad_avena"].map(map_familiaridad)
 df["fam_mani_num"] = df["familiaridad_mani"].map(map_familiaridad)
 
+#calcular promedios de familiaridad
 print("\n\n", df[["fam_choc_num", "fam_avena_num", "fam_mani_num"]].mean())
 
+#conteo de preferencias generales
 print("\n\nPreferencia general:\n\n", df["Preferencia"].value_counts())
 
+#calcular promedios de sabor
 promedios = df[
     [
 
@@ -36,8 +42,10 @@ promedios = df[
     ]
 ].mean()
 
+#mostrar resultados
 print("\n\nPromedios\n\n", promedios)
 
+#calcular promedios de sabor por genero y preferencia
 sabor_sexo = df.groupby("sexo")[
     [
 
@@ -56,9 +64,11 @@ sabor_promedios = df.groupby("Preferencia")[
     ]
 ].mean()
 
+#mostrar resultados
 print("\n\nSabores por genero:\n\n", sabor_sexo)
 print("\n\nSabores por Preferencia:\n\n", sabor_promedios)
 
+#visualizaciones
 sabor_sexo.plot(kind="bar")
 plt.title("Promedio por genero")
 plt.ylabel("Puntaje promedio")
